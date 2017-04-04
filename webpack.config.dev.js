@@ -10,19 +10,17 @@ module.exports = {
     output: {
     path: path.join(__dirname, 'static'),
     filename: '[name].js',
-    publicPath: '/static/',
-    plugins: [ new webpack.optimize.CommonsChunkPlugin("init.js") ]
-
+    publicPath: '/static/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
 module: {
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 exclude: /node_modules/,
                 include: path.join(__dirname, 'client'),
                 query: {

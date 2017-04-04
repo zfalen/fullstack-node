@@ -3,18 +3,16 @@ var webpack = require('webpack');
 
 module.exports = {
   devtool: 'source-map',
-  entry: { 
+  entry: {
     main: [
     './client/Index']
   },
     output: {
     path: path.join(__dirname, 'static'),
     filename: '[name].js',
-    publicPath: '/static/',
-    plugins: [ new webpack.optimize.CommonsChunkPlugin("init.js") ]
-  },
+    publicPath: '/static/'
+    },
   plugins: [
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production')
@@ -30,7 +28,7 @@ module: {
         loaders: [
             {
                 test: /\.js$/,
-                loader: 'babel',
+                loader: 'babel-loader',
                 exclude: /node_modules/,
                 include: path.join(__dirname, 'client'),
                 query: {
